@@ -1,9 +1,15 @@
+# Log
+*.log
+.quokka
+
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 dist
+helper
 
 # Dependency directories
 node_modules/
+package-lock.json
 
 # TypeScript v1 declaration files
 typings/

@@ -21,10 +21,14 @@ Consulta o quiery de prueba:
     }
   }
 }`
-##### Package
+### `npm start`
 Ejecuta `npm install`, dentro del directorio `server-api-rest` instalando así todas las dependencias en el path _node\_modules_.
 
-##### Start el Server
-Ejecuta `npm run dev`, dentro del directorio `server-api-rest` para empezar el server el puerto __4000__ en modo desarrollo __TypeScript__.
+#### Start el Server
 
+### `npm run dev`
+Ejecuta `npm run dev`, dentro del directorio `server-api-rest` para empezar el server el puerto __4000__ en modo desarrollo __TypeScript__.
+Consultas: [http://localhost:4000](http://localhost:4000) para consultar Server.
+
+### `npm run start:dev`
 Ejecuta `npm run start:dev` dentro del directorio `server-api-rest` para empezar el server el puerto __4000__ en modo desarrollo con codigo transpilado __JavaScript__.
