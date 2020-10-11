@@ -21,7 +21,7 @@ Consulta o quiery de prueba:
     }
   }
 }`
-### `npm start`
+### Instalacion dependencias
 Ejecuta `npm install`, dentro del directorio `server-api-rest` instalando así todas las dependencias en el path _node\_modules_.
 
 #### Start el Server
