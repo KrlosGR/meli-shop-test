@@ -16,6 +16,16 @@ const theme = createMuiTheme({
       disableGutters: true
     }
   },
+  typography: {
+    fontFamily: [
+      'Proxima Nova',
+      '-apple-system',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+    ].join(','),
+  },
   overrides: {
     MuiCssBaseline: {
       '@global': {
