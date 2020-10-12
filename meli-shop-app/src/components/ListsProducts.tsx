@@ -1,3 +1,6 @@
+import React, { FC, useContext, useEffect, useState } from 'react'
+import { RouteComponentProps } from '@reach/router';
+import NumberFormat from 'react-number-format';
 import {
   Container,
   createStyles,
@@ -6,18 +9,31 @@ import {
   makeStyles,
   Paper,
   Theme,
-  Typography
+  Typography,
+  withStyles
 } from '@material-ui/core';
-import { RouteComponentProps } from '@reach/router';
-import React, { FC, useContext, useEffect, useState } from 'react'
-import NumberFormat from 'react-number-format';
+import { Grade as GradeIcon } from '@material-ui/icons';
+import { Rating } from '@material-ui/lab';
 import { AppContext, IGlobalContext } from '../contexts/AppContext';
+import PlaceHolder from "./PlaceHolder";
 
-const useStyles = makeStyles((theme: Theme) =>
+const StyledRating = withStyles({
+  iconFilled: {
+    color: '#3483fa',
+  },
+  iconHover: {
+    color: '#ff3d47',
+  },
+})(Rating);
+
+export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
       padding: '30px',
+    },
+    text: {
+      transform: 'none'
     },
     paper: {
       padding: theme.spacing(2),
@@ -30,6 +46,10 @@ const useStyles = makeStyles((theme: Theme) =>
       '&:last-child': {
         borderRadius: '0 0 4px 4px'
       }
+    },
+    rating: {
+      color: '#3483fa',
+      // fontSize: 'px'
     },
     image: {
       width: 160,
@@ -53,21 +73,28 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-    // boxShadow: '0 1px 2px 0 rgba(0,0,0,.12)',
+
 const ListsProducts: FC<RouteComponentProps> = ({ location }) => {
   const classes = useStyles();
   const [delayed, setDelayed] = useState(true);
   const {
     state,
+    loading,
     fetchItems,
     getParameterByName,
     search,
     setSearch,
     searchQry }: IGlobalContext = useContext(AppContext)
 
+
+  function randomFloat(min: number, max: number): number {
+    return min + (max - min) * Math.random();
+  } 
+
   useEffect(() => {
     (async function fetchData() {
       if (location!.search && !search) {
+        setDelayed(true);
         await fetchItems(getParameterByName('search', location!.search));
         setDelayed(false);
       }
@@ -78,16 +105,19 @@ const ListsProducts: FC<RouteComponentProps> = ({ location }) => {
   useEffect(() => {
     (async function fetchData() {
       if (!search) return;
+      setDelayed(true);
       await fetchItems(searchQry);
-      setDelayed(false)
       setSearch(false);
+      setDelayed(false)
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
+  if (state.length < 1) return <div>Something went wrong ...</div>;
+
   return (
     <Container className={classes.root}>
-      { delayed ? <h1>Cargando...</h1> : state.map((prod, i) => (
+      { delayed ? <PlaceHolder /> : state.map((prod, i) => (
         <Paper key={i} className={classes.paper}>
           <Grid container spacing={2}>
             <Grid className={classes.imgItem}>
@@ -99,9 +129,7 @@ const ListsProducts: FC<RouteComponentProps> = ({ location }) => {
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs>
                   <Link href="#" underline="none">
-                    <Typography gutterBottom variant="h2" classes={{
-                      h2: classes.h2
-                    }}>
+                    <Typography gutterBottom variant="h2" classes={{ h2: classes.h2 }}>
                       {prod.title}
                     </Typography>
                   </Link>
@@ -119,7 +147,14 @@ const ListsProducts: FC<RouteComponentProps> = ({ location }) => {
                 </Grid>
               </Grid>
               <Grid item>
-                <Typography variant="subtitle1">{prod.condition}</Typography>
+                <StyledRating 
+                  icon={<GradeIcon fontSize="inherit" />} 
+                  size="small" 
+                  precision={0.5} 
+                  name="read-only" 
+                  value={randomFloat(0, 5)} 
+                  readOnly />
+                <Typography variant="subtitle1" align="right">{prod.condition}</Typography>
               </Grid>
             </Grid>
           </Grid>
