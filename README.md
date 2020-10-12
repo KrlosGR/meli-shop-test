@@ -30,5 +30,10 @@ Ejecuta `npm install`, dentro del directorio `server-api-rest` instalando así t
 Ejecuta `npm run dev`, dentro del directorio `server-api-rest` para empezar el server el puerto __4000__ en modo desarrollo __TypeScript__.
 Consultas: [http://localhost:4000](http://localhost:4000) para consultar Server.
 
+### `npm run build`
+Ejecuta `npm run build`, dentro del directorio `server-api-rest` para transpilar desde TypeScript to JavaScript ES6.
+
 ### `npm run start:dev`
 Ejecuta `npm run start:dev` dentro del directorio `server-api-rest` para empezar el server el puerto __4000__ en modo desarrollo con codigo transpilado __JavaScript__.
+Consultas: [http://localhost:4000](http://localhost:4000) para consultar Server.
+
