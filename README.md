@@ -1,5 +1,5 @@
 # Proyecto test para MELI Job
-React component to format number in an input or as a text
+Proyecto para el desarrollo de clone de MELI for Job.
 
 ## Node Express Server
 

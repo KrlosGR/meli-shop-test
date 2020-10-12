@@ -137,12 +137,7 @@ const ListsProducts: FC<RouteComponentProps> = ({ location }) => {
                     <NumberFormat value={prod.price.amount} displayType={'text'} thousandSeparator={true} prefix={prod.price.currency === 'ARS' ? '$' : 'U$S'} />
                   </Typography>
                   <Typography variant="body2" color="textSecondary">
-                    ID: 1030114
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                    Remove
+                    {prod.id}
                   </Typography>
                 </Grid>
               </Grid>
