@@ -37,9 +37,11 @@ Ejecuta `npm run build`, dentro del directorio `server-api-rest` para transpilar
 Ejecuta `npm run start:dev` dentro del directorio `server-api-rest` para empezar el server el puerto __4000__ en modo desarrollo con codigo transpilado __JavaScript__.
 Consultas: [http://localhost:4000](http://localhost:4000) para consultar Server.
 
-## Front React
+# Front React
 Los siguuientes Script deben ser ejecutados dentro de su respectivo directorio __meli-shop-app__ luego de instalar sus dependencias.
 
+Dicho front debe ser corrido junto con el server en paralelo expuesto en el puerto __4000__
+`npm run dev`, dentro del directorio `server-api-rest` para empezar el server el puerto __4000__ en modo desarrollo __TypeScript__.
 
 ## Available Scripts
 
