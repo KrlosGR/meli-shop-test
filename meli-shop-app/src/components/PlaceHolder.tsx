@@ -1,10 +1,10 @@
 import React from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { Card, Grid } from '@material-ui/core';
-import { useStyles } from "./ListsProducts";
+import { useListStyles } from '../styles/ListStyle';
 
 const PlaceHolder = () => {
-  const classes = useStyles();
+  const classes = useListStyles();
   return (
     <>
       <Card className={classes.paper}>

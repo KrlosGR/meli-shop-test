@@ -4,49 +4,9 @@ import { createHistory, Router } from '@reach/router';
 import { AppContextProvider } from "./contexts/AppContext";
 import Header from './components/Header'
 import ListsProducts from './components/ListsProducts';
+import { Container, CssBaseline, ThemeProvider } from '@material-ui/core';
 import DetailProduct from './components/DetailProduct';
-import { Container, createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
-
-const theme = createMuiTheme({
-  props: {
-    MuiPaper: {
-      square: true
-    },
-    MuiContainer: {
-      disableGutters: true
-    }
-  },
-  typography: {
-    fontFamily: [
-      'Proxima Nova',
-      '-apple-system',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-    ].join(','),
-  },
-  overrides: {
-    MuiCssBaseline: {
-      '@global': {
-        body: {
-          backgroundColor: '#ededed',
-        }
-      },
-    },
-    MuiContainer: {
-      root: {
-        minHeight: 0,
-        backgroundColor: '#ededed'
-      }
-    },
-    MuiPaper: {
-      elevation1: {
-        boxShadow: '0 1px 2px 0 rgba(0,0,0,.12)',
-      }
-    }
-  },
-});
+import { theme } from "./styles/GlobalStyle";
 
 function App() {
 
@@ -58,8 +18,8 @@ function App() {
           <Header />
           <Container component="section">
             <Router>
-              <ListsProducts path="/items" />
-              <DetailProduct path="/items/:idProduct" />
+              <ListsProducts path="items" />
+              <DetailProduct path="items/:idItem" />
             </Router>
           </Container>
         </AppContextProvider>
